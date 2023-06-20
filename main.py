@@ -1,17 +1,23 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import os
-import base64
 
 # Define Flask and CORS
 app = Flask(__name__)
 CORS(app)
 
-# Define images directory
-IMAGES_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 'images'))
+# Define the videos and images directory
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+IMAGES_DIR = os.path.join(BASE_DIR, 'images')
+VIDEOS_DIR = os.path.join(BASE_DIR, 'videos')
 
-# Define videos directory
-VIDEOS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 'videos'))
+# Verify if directory exists
+if not os.path.exists(IMAGES_DIR):
+    os.makedirs(IMAGES_DIR)
+
+# Verify if directory exists
+if not os.path.exists(VIDEOS_DIR):
+    os.makedirs(VIDEOS_DIR)
 
 
 # Endpoint to receive requisitions
@@ -40,7 +46,7 @@ def save_videos():
 def reply_with_images():
     img = []
     for filename in os.listdir(IMAGES_DIR):
-        img.append(f"http://localhost:5000/images/{filename}")
+        img.append(f"https://flask-production-0d95.up.railway.app/{IMAGES_DIR}/{filename}")
     return jsonify(img), 200
 
 
