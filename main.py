@@ -8,7 +8,7 @@ CORS(app)
 
 # Define the videos and images directory
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-IMAGES_DIR = os.path.join(BASE_DIR, 'images')
+IMAGES_DIR = os.path.join(BASE_DIR, 'static/images')
 VIDEOS_DIR = os.path.join(BASE_DIR, 'videos')
 
 # Verify if directory exists
@@ -45,7 +45,8 @@ def save_videos():
 @app.route('/api/get/images', methods=['GET'])
 def reply_with_images():
     img = []
-    for filename in os.listdir(IMAGES_DIR):
+    images_dir = os.path.join(app.root_path, 'static', 'images')
+    for filename in os.listdir(images_dir):
         img.append(f"https://flask-production-0d95.up.railway.app/images/{filename}")
     return jsonify(img), 200
 
