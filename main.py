@@ -46,7 +46,7 @@ def save_videos():
 def reply_with_images():
     img = []
     for filename in os.listdir(IMAGES_DIR):
-        img.append(f"https://flask-production-0d95.up.railway.app/{IMAGES_DIR}/{filename}")
+        img.append(f"https://flask-production-0d95.up.railway.app/images/{filename}")
     return jsonify(img), 200
 
 
