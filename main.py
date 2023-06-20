@@ -47,7 +47,7 @@ def reply_with_images():
     img = []
     images_dir = os.path.join(app.root_path, 'static', 'images')
     for filename in os.listdir(images_dir):
-        img.append(f"https://flask-production-0d95.up.railway.app/images/{filename}")
+        img.append(f"https://flask-production-0d95.up.railway.app/{images_dir}/{filename}")
     return jsonify(img), 200
 
 
