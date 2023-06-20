@@ -52,9 +52,9 @@ def reply_with_images():
 
 
 # Serve images
-@app.route('/images/<path:filename>')
+@app.route('/static/images/<path:filename>')
 def serve_images(filename):
-    return send_from_directory(IMAGES_DIR, filename)
+    return send_from_directory(os.path.join(app.root_path, 'static', 'images'), filename)
 
 
 if __name__ == '__main__':
