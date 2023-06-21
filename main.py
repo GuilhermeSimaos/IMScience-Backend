@@ -6,10 +6,12 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-# Define the videos and images directory
+
+# Define videos and images directory, also sets the url of the server
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 IMAGES_DIR = os.path.join(BASE_DIR, 'static/images')
 VIDEOS_DIR = os.path.join(BASE_DIR, 'videos')
+URL = 'https://flask-production-0d95.up.railway.app'
 
 # Verify if directory exists
 if not os.path.exists(IMAGES_DIR):
@@ -47,7 +49,7 @@ def reply_with_images():
     img = []
     images_dir = os.path.join(app.root_path, 'static', 'images')
     for filename in os.listdir(images_dir):
-        img.append(f"https://flask-production-0d95.up.railway.app/{images_dir}/{filename}")
+        img.append(f"/{images_dir}/{filename}")
     return jsonify(img), 200
 
 
