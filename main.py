@@ -47,10 +47,12 @@ def save_videos():
 @app.route('/api/get/images', methods=['GET'])
 def reply_with_images():
     img = []
+    for i in range(10):
+        img.append('https://picsum.photos/300')
     # images_dir = os.path.join(app.root_path, '/static', '/images')
-    images_dir = './static/images'
-    for filename in os.listdir(images_dir):
-        img.append(f"{URL}/{images_dir}/{filename}")
+    # images_dir = './static/images'
+    # for filename in os.listdir(images_dir):
+    #     img.append(f"{URL}/{images_dir}/{filename}")
     return jsonify(img), 200
 
 
