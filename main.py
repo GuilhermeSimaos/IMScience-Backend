@@ -50,7 +50,7 @@ def reply_with_images():
 
     img = []
     for i in range(10):
-        img.append(f'https://picsum.photos/id/{random.randint(0,100)}')
+        img.append(f'https://picsum.photos/300')
 
     # images_dir = os.path.join(app.root_path, '/static', '/images')
     # images_dir = './static/images'
